@@ -16,7 +16,7 @@
           :src="'//serebii.net/pokedex-xy/icon/' + item.number + '.png'"
           alt=""
         />
-        <span>{{ item.number }} - {{ item.name }}</span>
+        <span>{{ item.number | pokeNumber }} - {{ item.name }}</span>
       </li>
     </ul>
   </div>
@@ -30,16 +30,19 @@ export default {
   data() {
     return {
       pokemonList: [
-        { name: "Charizard 1", number: "006" },
-        { name: "Charizard 2", number: "007" },
-        { name: "Charizard 3", number: "008" },
-        { name: "Charizard 4", number: "009" },
+        { name: "Charizard 1", number: "6" },
+        { name: "Charizard 2", number: "7" },
+        { name: "Charizard 3", number: "25" },
+        { name: "Charizard 4", number: "251" },
         { name: "Charizard 5", number: "448" },
         { name: "Charizard 6", number: "655" },
       ],
     };
   },
   components: {},
+  filters: {
+
+  }
 };
 </script>
 
