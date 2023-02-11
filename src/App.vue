@@ -7,42 +7,46 @@
     />
     <input type="text" id="pokeFilter" placeholder="Search" />
     <ul class="poke-list">
-      <li
-        v-for="(item, index) in pokemonList"
-        :key="index"
-        class="poke-list-item"
-      >
-        <img
-          :src="'//serebii.net/pokedex-xy/icon/' + item.number + '.png'"
-          alt=""
-        />
-        <span>{{ item.number | pokeNumber }} - {{ item.name }}</span>
-      </li>
+      <ListPokes
+        v-for="item in pokemonList"
+        :key="item.number"
+        :pokemon="item"
+      />
     </ul>
   </div>
 </template>
 
 <script>
 import "./css/styles.css";
+import ListPokes from "@/components/ListPokes.vue";
 
 export default {
-  name: "App",
+  name: "app",
   data() {
     return {
       pokemonList: [
-        { name: "Charizard 1", number: "6" },
-        { name: "Charizard 2", number: "7" },
-        { name: "Charizard 3", number: "25" },
-        { name: "Charizard 4", number: "251" },
-        { name: "Charizard 5", number: "448" },
-        { name: "Charizard 6", number: "655" },
+        { name: "charizard 1", number: "6" },
+        { name: "charizard 2", number: "7" },
+        { name: "charizard 3", number: "25" },
+        { name: "charizard 4", number: "251" },
+        { name: "charizard 5", number: "448" },
+        { name: "charizard 6", number: "655" },
       ],
+      nameFilter: "",
     };
   },
-  components: {},
-  filters: {
-
-  }
+  methods: {},
+  components: {
+    ListPokes,
+  },
+  computed: {
+    pokeList: function () {
+      let nameFilter = this.nameFilter.toLowerCase();
+      return this.pokemonList.filter((pokemon) =>
+        pokemon.name.includes(nameFilter)
+      );
+    },
+  },
 };
 </script>
 
