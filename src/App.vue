@@ -21,23 +21,16 @@
 import "./css/styles.css";
 import ListPokes from "@/components/ListPokes.vue";
 import "./directives.js";
+import PokeService from "@/services.js";
 
 export default {
   name: "app",
   data() {
     return {
-      pokemonList: [
-        { name: "charizard 1", number: "6" },
-        { name: "charizard 2", number: "7" },
-        { name: "charizard 3", number: "25" },
-        { name: "charizard 4", number: "251" },
-        { name: "charizard 5", number: "448" },
-        { name: "charizard 6", number: "655" },
-      ],
+      pokemonList: [],
       nameFilter: "",
     };
   },
-  methods: {},
   components: {
     ListPokes,
   },
@@ -48,6 +41,11 @@ export default {
         pokemon.name.includes(nameFilter)
       );
     },
+  },
+  mounted: function () {
+    PokeService.API.Pokemon.listAll().then((pokemonList) => {
+      this.pokemonList = pokemonList;
+    });
   },
 };
 </script>
