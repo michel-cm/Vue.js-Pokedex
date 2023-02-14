@@ -6,13 +6,14 @@
       alt=""
       class="pokeball-back"
     />
-    <input type="text" id="pokeFilter" placeholder="Search" />
+    <input
+      type="text"
+      id="pokeFilter"
+      placeholder="Search"
+      v-model="nameFilter"
+    />
     <ul class="poke-list">
-      <ListPokes
-        v-for="item in pokemonList"
-        :key="item.number"
-        :pokemon="item"
-      />
+      <ListPokes v-for="item in pokeList" :key="item.number" :pokemon="item" />
     </ul>
   </div>
 </template>
