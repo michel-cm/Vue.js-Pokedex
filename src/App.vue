@@ -6,47 +6,19 @@
       alt=""
       class="pokeball-back"
     />
-    <input
-      type="text"
-      id="pokeFilter"
-      placeholder="Search"
-      v-model="nameFilter"
-    />
-    <ul class="poke-list">
-      <ListPokes v-for="item in pokeList" :key="item.number" :pokemon="item" />
-    </ul>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import "./css/styles.css";
-import ListPokes from "@/components/ListPokes.vue";
 import "./directives.js";
-import PokeService from "@/services.js";
 
 export default {
   name: "app",
   data() {
-    return {
-      pokemonList: [],
-      nameFilter: "",
-    };
-  },
-  components: {
-    ListPokes,
-  },
-  computed: {
-    pokeList: function () {
-      let nameFilter = this.nameFilter.toLowerCase();
-      return this.pokemonList.filter((pokemon) =>
-        pokemon.name.includes(nameFilter)
-      );
-    },
-  },
-  mounted: function () {
-    PokeService.API.Pokemon.listAll().then((pokemonList) => {
-      this.pokemonList = pokemonList;
-    });
+    return {};
   },
 };
 </script>
