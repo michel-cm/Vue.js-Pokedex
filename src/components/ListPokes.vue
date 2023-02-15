@@ -1,9 +1,11 @@
 <template>
   <div>
-    <li class="poke-list-item">
-      <img :src="sprite" alt="" />
-      <span>{{ pokemon.number | pokeNumber }} - {{ pokemon.name }}</span>
-    </li>
+    <router-link :to="number">
+      <li class="poke-list-item">
+        <img :src="sprite" alt="" />
+        <span>{{ pokemon.number | pokeNumber }} - {{ pokemon.name }}</span>
+      </li>
+    </router-link>
   </div>
 </template>
 

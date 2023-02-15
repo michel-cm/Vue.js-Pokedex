@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router.js";
+import router from "./routes.js";
 
 import "@/filters.js";
 

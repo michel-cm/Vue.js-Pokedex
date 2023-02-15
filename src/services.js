@@ -20,6 +20,9 @@ let PokeService = {
             .sort((a, b) => (a.number > b.number ? 1 : -1));
         });
       },
+      find: (number) => {
+        return PokeService.API.get(`pokemon/${number}`);
+      },
     },
   },
   getNumberFromURL: (url) => {

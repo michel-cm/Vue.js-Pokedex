@@ -17,9 +17,6 @@ import "./directives.js";
 
 export default {
   name: "app",
-  data() {
-    return {};
-  },
 };
 </script>
 
