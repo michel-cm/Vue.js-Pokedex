@@ -14,13 +14,11 @@
 
 <script>
 import ListPokes from "@/components/ListPokes.vue";
-import PokeService from "@/services.js";
 
 export default {
   name: "HomeView",
   data() {
     return {
-      pokemonList: [],
       nameFilter: "",
     };
   },
@@ -29,16 +27,11 @@ export default {
   },
   computed: {
     pokeList: function () {
-      let nameFilter = this.nameFilter.toLowerCase();
-      return this.pokemonList.filter((pokemon) =>
-        pokemon.name.includes(nameFilter)
-      );
+      return this.$store.state.pokemonList;
     },
   },
-  mounted: function () {
-    PokeService.API.Pokemon.listAll().then((pokemonList) => {
-      this.pokemonList = pokemonList;
-    });
+  created() {
+    this.$store.dispatch("fetchPokedex");
   },
 };
 </script>

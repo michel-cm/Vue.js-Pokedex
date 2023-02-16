@@ -6,7 +6,6 @@
       alt=""
       class="pokeball-back"
     />
-
     <router-view></router-view>
   </div>
 </template>
